@@ -1,0 +1,49 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (lin64) Build 6511674 Tue Jun 16 11:01:26 MDT 2026
+| Date         : Sun Sep 13 14:13:36 2026
+| Host         : [hostname redacted] running 64-bit Ubuntu 26.04.1 LTS
+| Command      : report_clocks -file <coprocessor>/src/reports/clocks.rpt
+| Design       : shadow_accel_bd_wrapper
+| Device       : 7z020-clg484
+| Speed File   : -1  PRODUCTION 1.12 2019-11-22
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Clock Report
+
+
+Attributes
+  P: Propagated
+  G: Generated
+  A: Auto-derived
+  R: Renamed
+  V: Virtual
+  I: Inverted
+  S: Pin phase-shifted with Latency mode
+
+Clock       Period(ns)  Waveform(ns)   Attributes  Sources
+clk_fpga_0  10.000      {0.000 5.000}  P           {shadow_accel_bd_i/ps7/inst/PS7_i/FCLKCLK[0]}
+
+
+====================================================
+Generated Clocks
+====================================================
+
+
+
+====================================================
+User Uncertainty
+====================================================
+
+From Clock  To Clock    Setup(ns)  Hold(ns)  Edges
+clk_fpga_0  clk_fpga_0  0.100      0.050     rf -> rf
+
+
+====================================================
+User Jitter
+====================================================
+
+Clock       Jitter(ns)
+clk_fpga_0  0.300
+

@@ -1,0 +1,13 @@
+[Unit]
+Description=Shadow accelerator USB CDC ACM gadget
+After=systemd-udev-settle.service
+Wants=systemd-udev-settle.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/sbin/start_shadow_gadget.sh
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,56 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+-------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (lin64) Build 6511674 Tue Jun 16 11:01:26 MDT 2026
+| Date         : Sun Sep 13 14:13:34 2026
+| Host         : [hostname redacted] running 64-bit Ubuntu 26.04.1 LTS
+| Command      : report_utilization -hierarchical -file <coprocessor>/src/reports/routed_utilization.rpt
+| Design       : shadow_accel_bd_wrapper
+| Device       : xc7z020clg484-1
+| Speed File   : -1
+| Design State : Routed
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------------+
+|                           Instance                           |                                                      Module                                                     | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
++--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------------+
+| shadow_accel_bd_wrapper                                      |                                                                                                           (top) |       1471 |       1410 |       0 |   61 | 2440 |      1 |      2 |          4 |
+|   shadow_accel_bd_i                                          |                                                                                                 shadow_accel_bd |       1471 |       1410 |       0 |   61 | 2440 |      1 |      2 |          4 |
+|     shadow_accel                                             |                                                                                  shadow_accel_bd_shadow_accel_0 |       1068 |       1068 |       0 |    0 | 1939 |      1 |      2 |          4 |
+|       inst                                                   |                                                                       shadow_accel_bd_shadow_accel_0_shadow_top |       1068 |       1068 |       0 |    0 | 1939 |      1 |      2 |          4 |
+|         accel_inst                                           |                                                               shadow_accel_bd_shadow_accel_0_shadow_accelerator |       1060 |       1060 |       0 |    0 | 1939 |      1 |      2 |          4 |
+|           (accel_inst)                                       |                                                               shadow_accel_bd_shadow_accel_0_shadow_accelerator |        210 |        210 |       0 |    0 |  733 |      0 |      0 |          0 |
+|           core_inst                                          |                                                                  shadow_accel_bd_shadow_accel_0_hls_shadow_core |        851 |        851 |       0 |    0 | 1206 |      1 |      2 |          4 |
+|             (core_inst)                                      |                                                                  shadow_accel_bd_shadow_accel_0_hls_shadow_core |        477 |        477 |       0 |    0 |  858 |      1 |      1 |          0 |
+|             u_hls                                            |                                                                       shadow_accel_bd_shadow_accel_0_shadow_hls |        374 |        374 |       0 |    0 |  348 |      0 |      1 |          4 |
+|               (u_hls)                                        |                                                                       shadow_accel_bd_shadow_accel_0_shadow_hls |         75 |         75 |       0 |    0 |  275 |      0 |      0 |          0 |
+|               grp_shadow_hls_Pipeline_VITIS_LOOP_14_1_fu_276 |                                   shadow_accel_bd_shadow_accel_0_shadow_hls_shadow_hls_Pipeline_VITIS_LOOP_14_1 |         63 |         63 |       0 |    0 |    7 |      0 |      0 |          0 |
+|                 flow_control_loop_pipe_sequential_init_U     |                                shadow_accel_bd_shadow_accel_0_shadow_hls_flow_control_loop_pipe_sequential_init |         62 |         62 |       0 |    0 |    2 |      0 |      0 |          0 |
+|               mul_32s_32s_64_4_1_U3                          |                                                    shadow_accel_bd_shadow_accel_0_shadow_hls_mul_32s_32s_64_4_1 |        180 |        180 |       0 |    0 |   66 |      0 |      0 |          4 |
+|               y_U                                            |                                                       shadow_accel_bd_shadow_accel_0_shadow_hls_y_RAM_AUTO_1R1W |         90 |         90 |       0 |    0 |    0 |      0 |      1 |          0 |
+|     axi_interconnect_0                                       |                                                                            shadow_accel_bd_axi_interconnect_0_0 |        387 |        327 |       0 |   60 |  468 |      0 |      0 |          0 |
+|       s00_couplers                                           |                                                                                         s00_couplers_imp_XWN25D |        387 |        327 |       0 |   60 |  468 |      0 |      0 |          0 |
+|         auto_pc                                              |                                                                shadow_accel_bd_axi_interconnect_0_imp_auto_pc_0 |        387 |        327 |       0 |   60 |  468 |      0 |      0 |          0 |
+|           inst                                               |          shadow_accel_bd_axi_interconnect_0_imp_auto_pc_0_axi_protocol_converter_v2_1_38_axi_protocol_converter |        387 |        327 |       0 |   60 |  468 |      0 |      0 |          0 |
+|             gen_axilite.gen_b2s_conv.axilite_b2s             |                             shadow_accel_bd_axi_interconnect_0_imp_auto_pc_0_axi_protocol_converter_v2_1_38_b2s |        387 |        327 |       0 |   60 |  468 |      0 |      0 |          0 |
+|               WR.aw_channel_0                                |                  shadow_accel_bd_axi_interconnect_0_imp_auto_pc_0_axi_protocol_converter_v2_1_38_b2s_aw_channel |         76 |         76 |       0 |    0 |   86 |      0 |      0 |          0 |
+|                 cmd_translator_0                             |              shadow_accel_bd_axi_interconnect_0_imp_auto_pc_0_axi_protocol_converter_v2_1_38_b2s_cmd_translator |         33 |         33 |       0 |    0 |   68 |      0 |      0 |          0 |
+|               RD.ar_channel_0                                |                  shadow_accel_bd_axi_interconnect_0_imp_auto_pc_0_axi_protocol_converter_v2_1_38_b2s_ar_channel |         65 |         65 |       0 |    0 |   82 |      0 |      0 |          0 |
+|                 cmd_translator_0                             |            shadow_accel_bd_axi_interconnect_0_imp_auto_pc_0_axi_protocol_converter_v2_1_38_b2s_cmd_translator_1 |         33 |         33 |       0 |    0 |   68 |      0 |      0 |          0 |
+|               RD.r_channel_0                                 |                   shadow_accel_bd_axi_interconnect_0_imp_auto_pc_0_axi_protocol_converter_v2_1_38_b2s_r_channel |         61 |         15 |       0 |   46 |   24 |      0 |      0 |          0 |
+|               SI_REG                                         |                  shadow_accel_bd_axi_interconnect_0_imp_auto_pc_0_axi_register_slice_v2_1_37_axi_register_slice |        155 |        155 |       0 |    0 |  258 |      0 |      0 |          0 |
+|                 ar.ar_pipe                                   |                 shadow_accel_bd_axi_interconnect_0_imp_auto_pc_0_axi_register_slice_v2_1_37_axic_register_slice |         57 |         57 |       0 |    0 |   66 |      0 |      0 |          0 |
+|                 aw.aw_pipe                                   |               shadow_accel_bd_axi_interconnect_0_imp_auto_pc_0_axi_register_slice_v2_1_37_axic_register_slice_0 |         61 |         61 |       0 |    0 |   68 |      0 |      0 |          0 |
+|                 r.r_pipe                                     | shadow_accel_bd_axi_interconnect_0_imp_auto_pc_0_axi_register_slice_v2_1_37_axic_register_slice__parameterized2 |         27 |         27 |       0 |    0 |   94 |      0 |      0 |          0 |
++--------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+------------+------------+---------+------+------+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

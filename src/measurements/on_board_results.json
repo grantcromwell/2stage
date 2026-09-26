@@ -1,0 +1,33 @@
+{
+  "platform": "ZedBoard XC7Z020; bare-metal OCM firmware, CPU0 IRQ61",
+  "timer_hz": 325000000,
+  "configured_fclk_hz": 100000000,
+  "uart": {},
+  "source": "live hardware, CRC/result verified",
+  "silicon_parity_cases": "skipped in this run",
+  "on_board": {
+    "samples": 1000,
+    "verified_interrupts": 1000,
+    "errors": 0,
+    "compute_cycles": 2449,
+    "timer_hz": 325000000,
+    "elapsed_ticks": 57993098,
+    "full_axi_transaction_us": {
+      "samples": 1000,
+      "mean": 175.53847076923077,
+      "p50": 175.53846153846155,
+      "p95": 175.53846153846155,
+      "minimum": 175.53846153846155,
+      "maximum": 175.54461538461538
+    },
+    "compute_start_to_irq_us": {
+      "samples": 1000,
+      "mean": 25.030775384615385,
+      "p50": 25.03076923076923,
+      "p95": 25.03076923076923,
+      "minimum": 25.03076923076923,
+      "maximum": 25.036923076923078
+    },
+    "sustained_updates_per_second": 5604.115165566772
+  }
+}

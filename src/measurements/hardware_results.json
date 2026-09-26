@@ -1,0 +1,144 @@
+{
+  "platform": "ZedBoard XC7Z020; bare-metal OCM firmware, CPU0 IRQ61",
+  "timer_hz": 325000000,
+  "configured_fclk_hz": 100000000,
+  "uart": {
+    "115200": {
+      "framing": "8N1",
+      "request_bytes": 2409,
+      "response_bytes": 136,
+      "bulk_payload_bytes": 16384,
+      "upload_bytes_per_second": {
+        "samples": 3,
+        "mean": 11516.004296618443,
+        "p50": 11515.778670908978,
+        "p95": 11516.48450043453,
+        "minimum": 11515.749718511823,
+        "maximum": 11516.48450043453
+      },
+      "board_rx_bytes_per_second": {
+        "samples": 3,
+        "mean": 11536.176558459836,
+        "p50": 11536.247587319844,
+        "p95": 11536.317919256595,
+        "minimum": 11535.964168803072,
+        "maximum": 11536.317919256595
+      },
+      "download_bytes_per_second": {
+        "samples": 3,
+        "mean": 11509.164043733806,
+        "p50": 11509.212723325361,
+        "p95": 11509.305958426632,
+        "minimum": 11508.973449449426,
+        "maximum": 11509.305958426632
+      },
+      "full_request_rtt_us": {
+        "samples": 100,
+        "mean": 222146.0093,
+        "p50": 222138.64750000002,
+        "p95": 222193.986,
+        "minimum": 222101.823,
+        "maximum": 222298.303
+      },
+      "compute_start_to_irq_us": {
+        "samples": 100,
+        "mean": 7.8219076923076925,
+        "p50": 7.8307692307692305,
+        "p95": 7.8584615384615395,
+        "minimum": 7.7907692307692304,
+        "maximum": 7.8584615384615395
+      },
+      "board_upload_compute_readback_us": {
+        "samples": 100,
+        "mean": 152.69316923076923,
+        "p50": 152.68,
+        "p95": 152.7630769230769,
+        "minimum": 152.64615384615385,
+        "maximum": 152.7630769230769
+      },
+      "sustained_host_updates_per_second": 4.500437348383616
+    },
+    "230400": {
+      "framing": "8N1",
+      "request_bytes": 2409,
+      "response_bytes": 136,
+      "bulk_payload_bytes": 16384,
+      "upload_bytes_per_second": {
+        "samples": 3,
+        "mean": 23016.684803402706,
+        "p50": 23017.082390965574,
+        "p95": 23017.106707344625,
+        "minimum": 23015.865311897916,
+        "maximum": 23017.106707344625
+      },
+      "board_rx_bytes_per_second": {
+        "samples": 3,
+        "mean": 23072.524821069666,
+        "p50": 23072.68997506656,
+        "p95": 23072.794949716685,
+        "minimum": 23072.089538425753,
+        "maximum": 23072.794949716685
+      },
+      "download_bytes_per_second": {
+        "samples": 3,
+        "mean": 23011.662343560718,
+        "p50": 23011.432780373078,
+        "p95": 23014.242190442306,
+        "minimum": 23009.31205986677,
+        "maximum": 23014.242190442306
+      },
+      "full_request_rtt_us": {
+        "samples": 100,
+        "mean": 111863.50606,
+        "p50": 111851.317,
+        "p95": 111937.95,
+        "minimum": 111775.964,
+        "maximum": 112007.582
+      },
+      "compute_start_to_irq_us": {
+        "samples": 100,
+        "mean": 7.8161538461538465,
+        "p50": 7.7907692307692304,
+        "p95": 7.8584615384615395,
+        "minimum": 7.7907692307692304,
+        "maximum": 7.8584615384615395
+      },
+      "board_upload_compute_readback_us": {
+        "samples": 100,
+        "mean": 152.69043076923077,
+        "p50": 152.67384615384617,
+        "p95": 152.7630769230769,
+        "minimum": 152.64615384615385,
+        "maximum": 152.7630769230769
+      },
+      "sustained_host_updates_per_second": 8.93508381945974
+    }
+  },
+  "source": "live hardware, CRC/result verified",
+  "silicon_parity_cases": 80,
+  "on_board": {
+    "samples": 1000,
+    "verified_interrupts": 1000,
+    "errors": 0,
+    "compute_cycles": 725,
+    "timer_hz": 325000000,
+    "elapsed_ticks": 50563580,
+    "full_axi_transaction_us": {
+      "samples": 1000,
+      "mean": 152.6784430769231,
+      "p50": 152.66923076923075,
+      "p95": 152.69846153846154,
+      "minimum": 152.65846153846155,
+      "maximum": 152.69846153846154
+    },
+    "compute_start_to_irq_us": {
+      "samples": 1000,
+      "mean": 7.810759999999999,
+      "p50": 7.806153846153846,
+      "p95": 7.8307692307692305,
+      "minimum": 7.7907692307692304,
+      "maximum": 7.8307692307692305
+    },
+    "sustained_updates_per_second": 6427.551213739217
+  }
+}

@@ -1,0 +1,31 @@
+/dts-v1/;
+
+
+
+
+#include "zynq-zed.dts"
+
+/ {
+	chosen {
+		bootargs = "console=ttyPS0,115200 root=/dev/ram0 rw rootfstype=ext2 earlycon=cdns,mmio,0xe0001000 clk_ignore_unused";
+	};
+};
+
+&usb0 {
+	dr_mode = "peripheral";
+	status = "okay";
+};
+
+&amba {
+	shadow_accelerator: accelerator@43c00000 {
+		compatible = "statArb,shadow-accelerator-1.0";
+		reg = <0x43c00000 0x1000>;
+		interrupt-parent = <&intc>;
+		interrupts = <0 29 4>;
+		clocks = <&clkc 15>;
+		clock-names = "aclk";
+		assigned-clocks = <&clkc 15>;
+		assigned-clock-rates = <100000000>;
+		status = "okay";
+	};
+};

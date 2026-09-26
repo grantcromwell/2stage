@@ -1,0 +1,1 @@
+{"workload":"Q16.16 matrix score y=A*x and q=xT*y; not full Kalman","dimension":24,"parity_cases":80,"dataset_cases":4,"warmup_seconds":3,"batches":40,"calls_per_batch":10000,"mean_ns_per_call":167.752,"p50_batch_ns_per_call":166.565,"p95_batch_ns_per_call":177.178,"checksum":1676860466912960,"java_version":"21.0.12.1","vm":"OpenJDK 64-Bit Server VM"}
