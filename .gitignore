@@ -4,10 +4,11 @@
 /src/blockdesign/shadow_accel_ip/
 /xsim.dir/
 axsim.sir
-/src/reports
 /src/linux/
-/src/constraints
 /src/measurements
+!/src/measurements
+!/src/measurements/testdata/
+!/src/measurements/testdata/shadow_vectors.txt
 
 # Raw measurement trace is too large for the source release; publish its summary instead.
 /src/measurements/resident_hardware_20260914.json
