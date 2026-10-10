@@ -1,6 +1,7 @@
 # Generate a PS-only hardware handoff for Vitis standalone firmware.  The
 # accelerator remains at 0x43C00000 in the separately programmed PL image.
 set fpga_root [file normalize [file join [file dirname [info script]] ..]]
+file mkdir $fpga_root/reports
 set board [get_board_parts -quiet digilentinc.com:zedboard:part0:*]
 if {[llength $board] != 1} {error "ZedBoard board files are required"}
 set target_part [get_property PART_NAME $board]

@@ -1,6 +1,9 @@
 set shadow_fpga_root [file normalize [file join [file dirname [info script]] ..]]
+file mkdir $shadow_fpga_root/reports
+set shadow_constraints [file join $shadow_fpga_root constraints shadow_accelerator.xdc]
+if {![file exists $shadow_constraints]} {error "Missing required constraints file: $shadow_constraints"}
 open_project $shadow_fpga_root/build/shadow_accel_proj/shadow_accel_proj.xpr
-add_files -fileset constrs_1 $shadow_fpga_root/constraints/shadow_accelerator.xdc
+add_files -fileset constrs_1 $shadow_constraints
 set_property PROCESSING_ORDER LATE [get_files shadow_accelerator.xdc]
 # One synthesis process avoids simultaneous high memory use on this host.
 set_param general.maxThreads 2

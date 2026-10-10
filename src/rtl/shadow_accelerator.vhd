@@ -64,6 +64,7 @@ architecture rtl of shadow_accelerator is
   signal core_dim : std_logic_vector(4 downto 0);
   signal core_mem_we : std_logic;
   signal commit_write : std_logic;
+  signal cancel_pending : std_logic;
   signal bvalid_i, rvalid_i : std_logic := '0';
   signal bresp_i, rresp_i : std_logic_vector(1 downto 0) := (others => '0');
   signal rdata_i : std_logic_vector(31 downto 0) := (others => '0');
@@ -85,6 +86,8 @@ begin
   irq <= ctrl(2) and done_latched;
 
   commit_write <= aw_pending and w_pending and not bvalid_i;
+  cancel_pending <= '1' when commit_write = '1' and awaddr_i = std_logic_vector(to_unsigned(0, ADDR_WIDTH)) and
+                    ((wstrb_i(0) = '1' and wdata_i(1) = '1') or (wstrb_i(0) = '0' and ctrl(1) = '1')) else '0';
   core_dim <= dimension(4 downto 0) when unsigned(dimension) <= 24 else (others => '0');
   core_mem_we <= '1' when commit_write = '1' and core_start = '0' and awaddr_i(1 downto 0) = "00" else '0';
   result_index <= std_logic_vector(resize(shift_right(unsigned(s_axi_araddr) - to_unsigned(16#A80#, ADDR_WIDTH), 2), 5));
@@ -117,7 +120,7 @@ begin
         core_start <= '0';
         core_cancel <= '0';
 
-        if core_done = '1' then
+        if core_done = '1' and core_cancel = '0' and cancel_pending = '0' then
           done_latched <= '1';
           error_latched <= core_error;
           sat_latched <= core_sat;
@@ -148,6 +151,7 @@ begin
             elsif next_ctrl_v(0) = '1' and ctrl(0) = '0' then
               if core_busy = '1' or core_start = '1' then
                 bresp_i <= "10";
+                ctrl <= next_ctrl_v and x"00000004";
               else
                 core_start <= '1';
                 done_latched <= '0'; error_latched <= '0'; sat_latched <= '0';

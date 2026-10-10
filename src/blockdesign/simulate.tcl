@@ -1,4 +1,8 @@
 set shadow_fpga_root [file normalize [file join [file dirname [info script]] ..]]
+proc InstallVectors {shadow_fpga_root} {
+  exec bash [file join $shadow_fpga_root hls generate-vectors.sh]
+}
+InstallVectors $shadow_fpga_root
 create_project -force shadow_sim $shadow_fpga_root/build/sim -part xc7z020clg484-1
 foreach rtl {shadow_core shadow_accelerator shadow_top} {
   add_files $shadow_fpga_root/rtl/$rtl.vhd

@@ -74,14 +74,12 @@ package q16_16_pkg;
   endfunction
 
   // Multiply-accumulate for Q16.16 x Q16.16 -> Q48.16
-  function automatic q48_16_t mac_q48(input q48_16_t acc, input q16_16_t a, input q16_16_t b);
+  function automatic q64_16_t mac_q64(input q64_16_t acc, input q16_16_t a, input q16_16_t b);
     q64_16_t prod;
     begin
       prod = $signed({{32{a[31]}}, a}) * $signed({{32{b[31]}}, b});
       prod = prod >>> 16;
       acc = acc + prod;
-      if (acc > Q48_MAX) return Q48_MAX;
-      if (acc < Q48_MIN) return Q48_MIN;
       return acc;
     end
   endfunction

@@ -19,7 +19,7 @@ architecture rtl of hls_shadow_core is
   type vector_t is array (0 to 23) of std_logic_vector(31 downto 0);
   signal matrix_mem : matrix_t := (others => (others => '0'));
   signal vector_mem, direction_mem : vector_t := (others => (others => '0'));
-  signal ap_start_i, ap_done_i, ap_idle_i, ap_ready_i : std_logic := '0';
+  signal ap_start_i, ap_done_i, ap_idle_i, ap_ready_i, abort_i : std_logic := '0';
   signal matrix_addr : std_logic_vector(9 downto 0); signal matrix_ce : std_logic;
   signal vector_addr, direction_addr : std_logic_vector(4 downto 0);
   signal vector_ce, direction_ce, direction_we : std_logic;
@@ -33,7 +33,7 @@ architecture rtl of hls_shadow_core is
   signal cycle_i : unsigned(31 downto 0) := (others => '0');
 begin
   u_hls: entity work.shadow_hls
-    port map (ap_clk=>clk, ap_rst=>not rst_n, ap_start=>ap_start_i, ap_done=>ap_done_i,
+    port map (ap_clk=>clk, ap_rst=>(not rst_n) or abort_i, ap_start=>ap_start_i, ap_done=>ap_done_i,
       ap_idle=>ap_idle_i, ap_ready=>ap_ready_i, matrix_address0=>matrix_addr,
       matrix_ce0=>matrix_ce, matrix_q0=>matrix_q,
       vector_address0=>vector_addr, vector_ce0=>vector_ce,
@@ -55,7 +55,7 @@ begin
       if vector_ce='1' and unsigned(vector_addr)<24 then
         vector_q<=vector_mem(to_integer(unsigned(vector_addr)));
       end if;
-      ap_start_i <= '0'; done_i <= '0';
+      ap_start_i <= '0'; abort_i <= '0'; done_i <= '0';
       if rst_n='0' then busy_i<='0'; saturated_i<='0'; error_i<='0'; q_latched<=(others=>'0'); cycle_i<=(others=>'0');
       else
         if mem_we='1' and busy_i='0' then
@@ -66,14 +66,16 @@ begin
             old:=vector_mem((a-16#A00#)/4); for b in 0 to 3 loop if mem_strb(b)='1' then old(8*b+7 downto 8*b):=mem_data(8*b+7 downto 8*b); end if; end loop; vector_mem((a-16#A00#)/4)<=old;
           end if;
         end if;
-        if cancel='1' then busy_i<='0';
+        if cancel='1' then busy_i<='0'; abort_i<='1';
         elsif start='1' and busy_i='0' then busy_i<='1'; ap_start_i<='1'; saturated_i<='0'; error_i<='0'; q_latched<=(others=>'0'); cycle_i<=(others=>'0'); direction_mem<=(others=>(others=>'0'));
         elsif busy_i='1' then cycle_i<=cycle_i+1; if ap_done_i='1' then busy_i<='0'; done_i<='1'; end if;
         end if;
-        if direction_we='1' then direction_mem(to_integer(unsigned(direction_addr)))<=direction_d; end if;
-        if q_vld='1' then q_latched<=q_i; end if;
-        if sat_vld='1' then saturated_i<=sat_i(0); end if;
-        if err_vld='1' then error_i<=err_i(0); end if;
+        if cancel='0' and abort_i='0' then
+          if direction_we='1' then direction_mem(to_integer(unsigned(direction_addr)))<=direction_d; end if;
+          if q_vld='1' then q_latched<=q_i; end if;
+          if sat_vld='1' then saturated_i<=sat_i(0); end if;
+          if err_vld='1' then error_i<=err_i(0); end if;
+        end if;
       end if;
     end if;
   end process;

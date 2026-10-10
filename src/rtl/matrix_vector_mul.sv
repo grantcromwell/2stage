@@ -24,7 +24,7 @@ module matrix_vector_mul #(
   state_t state, next_state;
   logic [4:0] row_idx, col_idx;
   logic [4:0] dim_reg;
-  q48_16_t acc [0:DIM-1];
+  q64_16_t acc [0:DIM-1];
   logic row_done;
 
   // Sequential logic
@@ -60,7 +60,7 @@ module matrix_vector_mul #(
         COMPUTE: begin
           if (col_idx < dim_reg) begin
             // Multiply-accumulate: acc[row] += matrix[row][col] * vector[col]
-            acc[row_idx] <= mac_q48(acc[row_idx], matrix[row_idx][col_idx], vector[col_idx]);
+            acc[row_idx] <= mac_q64(acc[row_idx], matrix[row_idx][col_idx], vector[col_idx]);
             col_idx <= col_idx + 1'b1;
           end else begin
             // Row complete, saturate and store

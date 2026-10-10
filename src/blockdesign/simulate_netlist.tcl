@@ -1,4 +1,9 @@
 set shadow_fpga_root [file normalize [file join [file dirname [info script]] ..]]
+file mkdir $shadow_fpga_root/reports
+proc InstallVectors {shadow_fpga_root} {
+  exec bash [file join $shadow_fpga_root hls generate-vectors.sh]
+}
+InstallVectors $shadow_fpga_root
 open_checkpoint $shadow_fpga_root/build/shadow_accel_proj/shadow_accel_proj.runs/shadow_accel_bd_shadow_accel_0_synth_1/shadow_accel_bd_shadow_accel_0.dcp
 write_verilog -force -mode funcsim -rename_top shadow_top_post_synth $shadow_fpga_root/reports/shadow_post_synth.v
 close_design
